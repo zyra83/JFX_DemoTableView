@@ -10,6 +10,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.extern.apachecommons.CommonsLog;
 import model.entities.Matiere;
@@ -71,11 +72,30 @@ public class IhmPrincipalePresenter {
 		// this.fm.ajouterMatiere(m);
 		resetFormulaire();
 	}
-	
-	private void resetFormulaire(){
+
+	private void resetFormulaire() {
 		this.tfLibelle.clear();
 		this.spCoef.getValueFactory().setValue(0);
 		this.dpDate.setValue(null);
+	}
+
+	public void supprimer() {
+		Matiere m = tvMatieres.getSelectionModel().getSelectedItem();
+		Integer index = tvMatieres.getSelectionModel().getSelectedIndex();
+		this.lstMatieres.remove(m);
+		if (log.isInfoEnabled())
+			log.info(String.format("Supression de la matière %s à l'index %s.", m.toString(), index.toString()));
+	}
+
+	public void editerCoef() {
+		Matiere m = tvMatieres.getSelectionModel().getSelectedItem();
+		Integer index = tvMatieres.getSelectionModel().getSelectedIndex();
+		TextInputDialog tid = new TextInputDialog();
+		tid.showAndWait();
+		this.lstMatieres.get(index).setCoef(Integer.parseInt(tid.getResult()));
+
+		if (log.isInfoEnabled())
+			log.info(String.format("Edition du coef %s à l'index %s.", m.toString(), index.toString()));
 	}
 
 }

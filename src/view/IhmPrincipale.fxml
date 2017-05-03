@@ -38,12 +38,12 @@
          <children>
       		
       		
-      		<Button mnemonicParsing="false" onAction="#cliquer" text="Button" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      		<Button mnemonicParsing="false" onAction="#ajouter" text="Button" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Label text="Libellé" />
             <Label text="Coef" GridPane.rowIndex="1" />
             <Label text="Date" GridPane.rowIndex="2" />
             <TextField fx:id="tfLibelle" GridPane.columnIndex="1" />
-            <Spinner fx:id="spCoef" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Spinner fx:id="spCoef" min="0" max="10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker fx:id="dpDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>

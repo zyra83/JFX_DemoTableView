@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,11 +18,13 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @EqualsAndHashCode(of = { "nom" })
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class Matiere implements Serializable {
 
 	@Getter
 	@Setter
 	String nom;
+
 
 	@Getter
 	@Setter

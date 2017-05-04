@@ -57,5 +57,6 @@
             <DatePicker fx:id="dpDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
+      <Label fx:id="label" text="Label" />
 	</children>
 </VBox>

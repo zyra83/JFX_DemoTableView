@@ -2,19 +2,16 @@ package presenter;
 
 import java.time.LocalDate;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import lombok.extern.apachecommons.CommonsLog;
 import view.model.MatiereObs;
 
@@ -35,6 +32,8 @@ public class IhmPrincipalePresenter {
 	private Spinner<Integer> spCoef;
 	@FXML
 	private DatePicker dpDate;
+	@FXML
+	private Label label;
 
 	/**
 	 * Liste observable : tient la vue au courant de ses ajouts/supression.
@@ -56,10 +55,12 @@ public class IhmPrincipalePresenter {
 	public void initialize() {
 		lstMatieres.add(new MatiereObs("Math", 1, LocalDate.now().plusDays(1)));
 		this.tvMatieres.setItems(lstMatieres);
-		this.tcLibelle.setCellValueFactory((param) -> param.getValue().getNomProperty() );
+		this.tcLibelle.setCellValueFactory((param) -> param.getValue().getNomProperty());
 		// asObject parceque integerProperty n'éhrite pas de ObservableValue<Integer> donc on encapsule
-		this.tcCoef.setCellValueFactory((param) -> param.getValue().getCoefProperty().asObject()  );
-		this.tcDate.setCellValueFactory((param) -> param.getValue().getDateProperty() );
+		this.tcCoef.setCellValueFactory((param) -> param.getValue().getCoefProperty().asObject());
+		this.tcDate.setCellValueFactory((param) -> param.getValue().getDateProperty());
+		// lier la valeur du spinner au texte du label
+		label.textProperty().bind(spCoef.getValueFactory().valueProperty().asString());
 	}
 
 	public void espionner() {

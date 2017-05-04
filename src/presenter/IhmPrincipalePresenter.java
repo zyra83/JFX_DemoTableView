@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseEvent;
 import lombok.extern.apachecommons.CommonsLog;
 import view.model.MatiereObs;
 
@@ -61,6 +62,9 @@ public class IhmPrincipalePresenter {
 		this.tcDate.setCellValueFactory((param) -> param.getValue().getDateProperty());
 		// lier la valeur du spinner au texte du label
 		label.textProperty().bind(spCoef.getValueFactory().valueProperty().asString());
+		
+		this.tvMatieres.addEventHandler(MouseEvent.MOUSE_ENTERED, (evt)-> label.setStyle("-fx-background-color: green;"));
+		this.tvMatieres.addEventHandler(MouseEvent.MOUSE_EXITED, (evt)-> label.setStyle("-fx-background-color: red;"));
 	}
 
 	public void espionner() {

@@ -65,6 +65,9 @@ public class IhmPrincipalePresenter {
 		
 		this.tvMatieres.addEventHandler(MouseEvent.MOUSE_ENTERED, (evt)-> label.setStyle("-fx-background-color: green;"));
 		this.tvMatieres.addEventHandler(MouseEvent.MOUSE_EXITED, (evt)-> label.setStyle("-fx-background-color: red;"));
+		
+		this.tvMatieres.addEventHandler(MouseEvent.MOUSE_EXITED, (evt)-> log.info("bubbling : source vers racine"));
+		this.tvMatieres.addEventFilter(MouseEvent.MOUSE_EXITED, (evt)-> log.info("capture : racine vers source"));
 	}
 
 	public void espionner() {
